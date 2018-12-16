@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en-nz">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/vendors/bootstrap.min.css">
+  <link rel="stylesheet" href="css/vendors/animate.min.css">
+  <link rel="stylesheet" href="css/vendors/circle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/vendors/tempusdominus.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+
+  <title>New Zealand Road Trip Advisor</title>
+
+  <!-- Favicon flag image by Adam Mills http://flagpost.nz/flags/5820/ - Cropped by me to a square favicon -->
+  <!-- Used under the Creative Commons Attribution 3.0 NZ Licence https://creativecommons.org/licenses/by/3.0/nz/ -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#474747">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="theme-color" content="#000000">
+
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="og:description" content="Find your next perfect road trip, and the perfect vehicle for it!">
+  <meta property="og:title" content="New Zealand Road Trip Advisor">
+  <meta property="og:url" content="http://tim.devries.yoobee.net.nz/nz-road-trip/index.html">
+  <meta property="og:image" content="https://tim.devries.yoobee.net.nz/nz-road-trip/img/social/motorcycle-driving.jpg/og-image.jpg">
+</head>
+
+<body class="body-background-carousel">
+  <!-- Header -->
+  <div class="mb-2 mb-lg-4 py-2 bg-dark fixed-top animated d-none" id="siteHeader">
+    <div class="container col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+      <div class="row justify-content-between section-head">
+        <div class="col-3 align-self-center">
+          <h6 class="text-white text-uppercase mb-0" id="currentPageTitle">
+            NZ Road Trip
+          </h6>
+        </div>
+        <div class="col">
+          <div id="progressBar" class="c100 p25 small">
+            <span id="progressText">25%</span>
+            <div class="slice">
+              <div class="bar"></div>
+              <div class="fill"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto align-self-center">
+          <button id="btnDisableScrollify" class="btn btn-outline-secondary btn-sm mr-4">Scroll</button>
+        </div>
+        <div class="col-auto pl-1">
+          <div class="prev arrow-icon mt-3">
+            <div class="arrow-icon-text"><small class="text-white">top</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section id="page1" class="" data-section-name="pageOne">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center mr-0 ml-0">
+        <div class="row  w-100 justify-content-center  mr-0 ml-0">
+          <div class="content-container rounded text-white text-center p-md-5  animated bounceInDown">
+            <h2 class="hero-title">Welcome to the</h2>
+            <h1 class="hero-title pt-4">New Zealand Road Trip Advisor</h1>
+          </div>
+        </div>
+        <div class="next row h-25 w-100 justify-content-center align-items-center mr-0 ml-0">
+          <div class="animated infinite bounceInUp slow" id="homeDownArrow"><img src="img/icons/down-arrow.svg" class="down-arrow"
+              alt="down icon"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="page2" data-section-name="pageTwo">
+    <div class="container h-100 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pt-6">
+      <div class="content-container rounded">
+        <!-- Range Input -->
+        <div class="slide-container mb-1 mb-md-3 rounded inset-shadow">
+          <h4 class="text-center pt-1 pt-md-3"><span id="UInumDays">How many days?</span><span id="badgeTotal"></span></h4>
+          <form class="mt-1">
+            <div class="form-group">
+              <label class="sr-only" for="sliderDaysRange">days slider</label>
+              <input type="range" class="custom-range" id="sliderDaysRange" min="5" max="32" value="32">
+            </div>
+          </form>
+        </div>
+
+        <!-- Island Tabs -->
+        <ul class="nav nav-tabs nav-fill mt-1 mt-md-3" id="islandTabs" role="tablist">
+          <li class="nav-item north-tab mr-2">
+            <a class="nav-link active inset-shadow hover-shrink" id="north-island-tab" data-toggle="tab" href="#northIsland"
+              role="tab" aria-selected="true">North <span id="badgeNorth" class="badge badge-secondary">0</span></a>
+          </li>
+          <li class="nav-item south-tab mx-2">
+            <a class="nav-link inset-shadow hover-shrink" id="south-island-tab" data-toggle="tab" href="#southIsland"
+              role="tab" aria-selected="false">South <span id="badgeSouth" class="badge badge-secondary">0</span></a>
+          </li>
+          <li class="nav-item both-tab ml-2 inset-shadow">
+            <a class="nav-link inset-shadow hover-shrink" id="both-island-tab" data-toggle="tab" href="#bothIsland"
+              role="tab" aria-selected="false">All NZ <span id="badgeBoth" class="badge badge-secondary">0</span></a>
+          </li>
+        </ul>
+
+        <!-- Island Tabs Content -->
+        <div class="tab-content inset-shadow mt-1 mt-md-3" id="myTabContent">
+          <div class="tab-pane fade show active" id="northIsland" role="tabpanel" aria-labelledby="north-island-tab">
+            <!-- First Tab Content -->
+            <div id="northIslandThumbContainer" class="row no-gutters justify-content-around pt-3 px-3 px-md-1 pb-md-0">
+              <!-- JS append north island thumbs here -->
+            </div>
+          </div>
+          <div class="tab-pane fade" id="southIsland" role="tabpanel" aria-labelledby="south-island-tab">
+            <!-- Second Tab Content -->
+            <div id="southIslandThumbContainer" class="row no-gutters justify-content-around pt-3 px-3 px-md-1 pb-md-0">
+              <!-- JS append south island thumbs here -->
+            </div>
+          </div>
+          <div class="tab-pane fade" id="bothIsland" role="tabpanel" aria-labelledby="both-island-tab">
+            <!-- Third Tab Content -->
+            <div id="bothIslandThumbContainer" class="row no-gutters justify-content-around pt-3 px-3 px-md-1 pb-md-0">
+              <!-- JS append both islands thumbs here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="page3" data-section-name="pageThree">
+    <div class="container h-100 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pt-6">
+      <div class="content-container rounded shadow-lg">
+        <!-- Range Input -->
+        <div class="slide-container mb-1 mb-md-3 rounded inset-shadow">
+          <h4 class="text-center pt-1 pt-md-3"><span id="numPeople">Number of people...</span></h4>
+          <form class="mt-3">
+            <div class="form-group">
+              <label class="sr-only" for="sliderPeopleRange">people slider</label>
+              <input type="range" class="custom-range" id="sliderPeopleRange" min="0" max="6" value="0">
+            </div>
+          </form>
+        </div>
+        <!-- First Tab Content -->
+        <div class="slide-container rounded row no-gutters justify-content-around inset-shadow m-0 mt-1 mt-md-3" id="transportThumbContainer">
+          <!-- JS append transport options here -->
+        </div>
+      </div>
+      <div class="tab-pane fade" role="tabpanel"></div>
+    </div>
+  </section>
+
+
+  <section id="page4" data-section-name="pageFour">
+    <div class="container h-100 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pt-6">
+      <div class="content-container rounded shadow-lg">
+        <div class="slide-container pb-3 py-md-5 rounded inset-shadow">
+          <h4 class="mb-2 mb-md-4 text-center">Trip Summary</h4>
+          <div class="row">
+            <!-- Trip overview and Price Details -->
+            <div class="col-lg-7 trip-overview">
+              <div class="border-bottom mb-1 mb-md-3 py-2">
+
+                <div class="overview-table">
+                  <div class="row mx-0 pb-2 pt-1 border-bottom">
+                    <div class="col-3 text-right">Days</div>
+                    <div class="col" id="chosenDays"></div>
+                    <div id="changeDays" class="col-auto"><button class="btn btn-outline-primary btn-sm">change</button></div>
+                  </div>
+                  <div class="row mx-0 py-2 border-bottom">
+                    <div class="col-3 text-right">Route</div>
+                    <div class="col" id="chosenRoute"></div>
+                    <div id="changeRoute" class="col-auto"><button class="btn btn-outline-primary btn-sm">change</button></div>
+                  </div>
+                  <div class="row mx-0 py-2 border-bottom">
+                    <div class="col-3 text-right">People</div>
+                    <div class="col" id="chosenPeople"></div>
+                    <div id="changePeople" class="col-auto"><button class="btn btn-outline-primary btn-sm">change</button></div>
+                  </div>
+                  <div class="row mx-0 pt-2">
+                    <div class="col-3 text-right">Vehicle</div>
+                    <div class="col" id="chosenVehicle"></div>
+                    <div id="changeVehicle" class="col-auto"><button class="btn btn-outline-primary btn-sm">change</button></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vehicle Price Details -->
+              <div class="vehicle-price-details mt-3">
+                <p>Base Price:<br> <span id="totalBasePrice">0</span></p>
+                <p>Fuel: <span id="totalFuel">0</span></p>
+                <p>Insurance:<br> <span id="totalInsurancePrice">0</span></p>
+                <p class="border-top pt-2">TOTAL: <span id="totalPrice">0</span></p>
+              </div>
+              <button class="btn btn-primary btn-block shadow bg-white rounded" id="btnConfirmBooking">Book This
+                Trip</button>
+            </div>
+            <!-- Images -->
+            <div class="col-lg-5 d-none d-lg-block">
+              <figure>
+                <img src="img/img-placeholder-2-1.svg" alt="chosen route" class="d-block img-fluid rounded" id="imgOverviewRoute">
+                <figcaption class="figure figure-caption mb-4 text-center text-capitalize">Chosen Route</figcaption>
+              </figure>
+              <figure>
+                <img src="img/img-placeholder-16-10.svg" alt="chosen vehicle" class="d-none d-lg-block img-fluid rounded"
+                  id="imgOverviewVehicle">
+                <figcaption class="figure figure-caption text-center text-capitalize">Chosen Vehicle</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="page5" data-section-name="pageFive">
+    <div class="container h-100 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pt-7">
+      <div class="content-container rounded shadow-lg">
+        <div class="slide-container pb-4 py-md-5 rounded inset-shadow">
+          <h4 class="mb-2 mb-md-4 text-center">Pick Up & Drop Off</h4>
+          <form class="" id="bookingForm">
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <label for="inputPickUp" class="text-muted">Pick-up</label>
+                <div class="input-group date" id="datetimepickerPickUp" data-target-input="nearest">
+                  <input type="text" id="inputPickUp" class="form-control datetimepicker-input" data-target="#datetimepickerPickUp" />
+                  <div class="input-group-append" data-target="#datetimepickerPickUp" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="formLocationPickup" class="text-muted">Pick-up location</label>
+                <input class="form-control" id="formLocationPickup" type="text" value="Choose a route to display pick-up location"
+                  readonly>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="inputDropOff" class="text-muted">Drop-off</label>
+                <div class="input-group date" id="datetimepickerDropOff" data-target-input="nearest">
+                  <input type="text" id="inputDropOff" class="form-control datetimepicker-input" data-target="#datetimepickerDropOff" />
+                  <div class="input-group-append" data-target="#datetimepickerDropOff" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="formLocationDropOff" class="text-muted">Drop-off location</label>
+                <input class="form-control" id="formLocationDropOff" type="text" value="Choose a route to display drop-off location"
+                  readonly>
+              </div>
+            </div>
+            <div class="mt-2 mt-md-4">
+              <button type="submit" class="btn btn-primary btn-block shadow bg-white rounded">Confirm Dates</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="page6" data-section-name="pageSix">
+    <div class="container h-100 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pt-7">
+      <div class="content-container rounded shadow-lg col-12">
+        <div class="slide-container pb-4 py-md-5 rounded inset-shadow">
+          <h4 class="mb-2 mb-md-4 text-center">Personal Details</h4>
+          <form id="bookingForm2" class="">
+            <div class="form-row mt-md-5">
+              <div class="form-group col-md-6">
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email..." required>
+                <div class="invalid-feedback">
+                  Please enter a valid e-mail.
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="datetimepickerDOB" class="sr-only">Date of birth</label>
+                <div class="input-group date" data-target-input="nearest">
+                  <input type="text" placeholder="Enter Date of birth" id="datetimepickerDOB" class="form-control datetimepicker-input"
+                    data-target="#datetimepickerDOB" />
+                  <div class="input-group-append" data-target="#datetimepickerDOB" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+                <div class="invalid-feedback">
+                  Enter date of birth (dd/mm/yyyy).
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6 col-md-4">
+                <label for="inputDriverLicense" class="sr-only"><small>Driver license country</small></label>
+                <select id="inputDriverLicense" class="form-control">
+                  <option selected>Country...</option>
+                  <option>Australia</option>
+                  <option>New Zealand</option>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                </select>
+              </div>
+              <div class="form-group col-6 col-md-4">
+                <label for="inputDriverLicenseNr" class="sr-only">Driver license number</label>
+                <input type="text" class="form-control" id="inputDriverLicenseNr" placeholder="License number...">
+              </div>
+            </div>
+            <div class="form-row mt-md-3">
+              <div class="form-group col-6">
+                <label for="inputFirstName" class="sr-only">First name</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="Enter first name...">
+              </div>
+              <div class="form-group col-6">
+                <label for="inputLastName" class="sr-only">Last name</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="Enter last name...">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="inputAddress" class="sr-only">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+              <div class="form-group col-6">
+                <label for="inputAddress2" class="sr-only">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="inputCity" class="sr-only">City</label>
+                <input type="text" class="form-control" id="inputCity" placeholder="City...">
+              </div>
+              <div class="form-group col-6">
+                <label for="inputState" class="sr-only">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>State...</option>
+                  <option>...</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-8">
+                <label for="inputCountry" class="sr-only">Country</label>
+                <select id="inputCountry" class="form-control">
+                  <option selected>Country...</option>
+                  <option>Australia</option>
+                  <option>New Zealand</option>
+                </select>
+              </div>
+              <div class="form-group col-4">
+                <label for="inputPostCode" class="sr-only">Post code</label>
+                <input type="text" class="form-control" id="inputPostCode" placeholder="Postcode...">
+              </div>
+            </div>
+            <div class="mt-md-4">
+              <button type="submit" class="btn btn-primary btn-block shadow bg-white rounded">Confirm Booking</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="page7" class="" data-section-name="pageSeven">
+    <div class="destroyable container h-100 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 pt-7">
+      <div class="content-container rounded shadow-lg align-items-center mx-auto">
+        <div class="slide-container pb-4 py-md-5 rounded inset-shadow">
+          <h4 class="mb-4 text-center">You're All Set!</h4>
+          <div class="col-md-8 mx-auto mt-3">
+            <p>Thank you for your booking. We have sent you an email with the booking confirmation.</p>
+            <button id="btnWatchShow" class="btn btn-outline-primary btn-block shadow bg-white rounded mt-5">Let me
+              watch the show</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalRoute" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">
+            Route Name
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="modalContent">
+            <!-- JS Insert Content Here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary modalConfirm shadow-lg" data-dismiss="modal">Drive This</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/vendors/jquery-3.3.1.min.js"></script>
+  <script src="js/vendors/bootstrap.bundle.min.js"></script>
+  <script src="js/vendors/jquery.scrollify.min.js"></script>
+  <script src="js/vendors/moment.min.js"></script>
+  <script src="js/vendors/tempusdominus-bootstrap-4.min.js"></script>
+
+  <script src="js/routes.min.js"></script>
+  <script src="js/transport.min.js"></script>
+  <script src="js/app.min.js"></script>
+</body>
+
+</html>
